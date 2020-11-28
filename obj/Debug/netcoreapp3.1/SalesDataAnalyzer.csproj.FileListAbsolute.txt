@@ -1,0 +1,13 @@
+C:\Users\MIZ-Pdog\Desktop\SalesDataAnalyzer\bin\Debug\netcoreapp3.1\SalesDataAnalyzer.exe
+C:\Users\MIZ-Pdog\Desktop\SalesDataAnalyzer\bin\Debug\netcoreapp3.1\SalesDataAnalyzer.deps.json
+C:\Users\MIZ-Pdog\Desktop\SalesDataAnalyzer\bin\Debug\netcoreapp3.1\SalesDataAnalyzer.runtimeconfig.json
+C:\Users\MIZ-Pdog\Desktop\SalesDataAnalyzer\bin\Debug\netcoreapp3.1\SalesDataAnalyzer.runtimeconfig.dev.json
+C:\Users\MIZ-Pdog\Desktop\SalesDataAnalyzer\bin\Debug\netcoreapp3.1\SalesDataAnalyzer.dll
+C:\Users\MIZ-Pdog\Desktop\SalesDataAnalyzer\bin\Debug\netcoreapp3.1\SalesDataAnalyzer.pdb
+C:\Users\MIZ-Pdog\Desktop\SalesDataAnalyzer\obj\Debug\netcoreapp3.1\SalesDataAnalyzer.csprojAssemblyReference.cache
+C:\Users\MIZ-Pdog\Desktop\SalesDataAnalyzer\obj\Debug\netcoreapp3.1\SalesDataAnalyzer.AssemblyInfoInputs.cache
+C:\Users\MIZ-Pdog\Desktop\SalesDataAnalyzer\obj\Debug\netcoreapp3.1\SalesDataAnalyzer.AssemblyInfo.cs
+C:\Users\MIZ-Pdog\Desktop\SalesDataAnalyzer\obj\Debug\netcoreapp3.1\SalesDataAnalyzer.csproj.CoreCompileInputs.cache
+C:\Users\MIZ-Pdog\Desktop\SalesDataAnalyzer\obj\Debug\netcoreapp3.1\SalesDataAnalyzer.dll
+C:\Users\MIZ-Pdog\Desktop\SalesDataAnalyzer\obj\Debug\netcoreapp3.1\SalesDataAnalyzer.pdb
+C:\Users\MIZ-Pdog\Desktop\SalesDataAnalyzer\obj\Debug\netcoreapp3.1\SalesDataAnalyzer.genruntimeconfig.cache

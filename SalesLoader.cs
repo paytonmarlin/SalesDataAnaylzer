@@ -26,10 +26,19 @@ namespace SalesDataAnalyzer
                         lineNumber++;
                         if (lineNumber == 1) continue;
 
-                        var values = line.Split("\t"); //splits into tabs, not commas
+                        var values = line.Split(","); //splits into tabs, not commas
+                       
 
                     //gives error is the csv file has more than 8 fields
-                        if (values.Length != NumItemsInRow)
+                        if (values.Length == 9)
+                        {
+                            var twoCommas = string.Concat(values[2] + values[3]);
+                            var stringTwoCommas = Convert.ToString(twoCommas);
+                            line.Replace(values[2], stringTwoCommas);
+                            line.Replace(values[3], "");
+                            
+                        }
+                        else if (values.Length != NumItemsInRow)
                         {
                             throw new Exception($"Row {lineNumber} contains {values.Length} values. It should contain {NumItemsInRow}.");
                         }
@@ -37,7 +46,7 @@ namespace SalesDataAnalyzer
                         try
                         {
                             int invoiceNo = Int32.Parse(values[0]);
-                            int stockCode = Int32.Parse(values[1]);
+                            string stockCode = (values[1]);
                             string description = (values[2]);
                             int quantity = Int32.Parse(values[3]);
                             DateTime invoiceDate = DateTime.Parse(values[4]);

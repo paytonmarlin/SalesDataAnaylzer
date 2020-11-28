@@ -1,0 +1,8 @@
+{
+  "runtimeOptions": {
+    "additionalProbingPaths": [
+      "C:\\Users\\MIZ-Pdog\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\MIZ-Pdog\\.nuget\\packages"
+    ]
+  }
+}

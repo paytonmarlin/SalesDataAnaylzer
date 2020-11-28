@@ -7,7 +7,7 @@ namespace SalesDataAnalyzer
     {
         public int InvoiceNo;
 
-        public int StockCode;
+        public string StockCode;
 
         public string Description;
 
@@ -22,10 +22,10 @@ namespace SalesDataAnalyzer
         public string Country;
 
     //create constructor that takes in all attributes of the 'Sales' class including DateTime value type
-        public Sales(int invoiceNo, int stockCode, string description, int quantity, DateTime invoiceDate, float unitPrice, 
+        public Sales(int invoiceNo, string stockCode, string description, int quantity, DateTime invoiceDate, float unitPrice, 
         int customerID, string country)
         {
-            InvoiceDate = invoiceDate;
+            InvoiceNo = invoiceNo;
             StockCode = stockCode;
             Description = description;
             Quantity = quantity;

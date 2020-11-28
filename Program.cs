@@ -24,6 +24,17 @@ namespace SalesDataAnalyzer
                 Console.WriteLine(e.Message);
                 Environment.Exit(2);
             }
+
+            var report = SalesReport.GenerateText(salesList);
+
+            try
+            {
+                System.IO.File.WriteAllText(reportFilePath, report);
+            } catch (Exception e) {
+                Console.WriteLine(e.Message);
+                Environment.Exit(3);
+            }
+            
         }
     }
 }
