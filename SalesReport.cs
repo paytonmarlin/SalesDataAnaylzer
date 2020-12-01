@@ -37,8 +37,7 @@ namespace SalesDataAnalyzer
         }
 
         //How many individual sales were there? To determine this you have to cout the unique invoice numbers. You should group by invoice number?
-        var distinctSales = (from sales in salesList 
-                             where sales.InvoiceNo > 0 
+        var distinctSales = (from sales in salesList  
                              select sales).Distinct(); //gets unique numbers
         var countDistinct = 0;
         if(distinctSales.Count() > 0)
@@ -58,7 +57,7 @@ namespace SalesDataAnalyzer
         //What is the sales total for invoice number 536365? 
         //Sales total for an invoice will be the sum of (Quantity * UnitPrice) for all products sold in the invoice.
         var salesTotal = from sales in salesList 
-                         where sales.InvoiceNo == 536365 
+                         where sales.InvoiceNo == "536365" 
                          select sales;
         var overallTotal = 0.0; //set default float value
         if(salesTotal.Count() > 0)
@@ -109,7 +108,7 @@ namespace SalesDataAnalyzer
 
         //What are the total sales to customer 15311?
         var customerSales = from sales in salesList
-                            where sales.CustomerID == 15311
+                            where sales.CustomerID == "15311"
                             select sales;
         var totalSales = 0;
         if(customerSales.Count() > 0)

@@ -5,7 +5,7 @@ namespace SalesDataAnalyzer
     //create a class to initiate with all the headers inside the txt file
     public class Sales
     {
-        public int InvoiceNo;
+        public string InvoiceNo;
 
         public string StockCode;
 
@@ -17,13 +17,13 @@ namespace SalesDataAnalyzer
 
         public float UnitPrice;
 
-        public int CustomerID;
+        public string CustomerID;
 
         public string Country;
 
     //create constructor that takes in all attributes of the 'Sales' class including DateTime value type
-        public Sales(int invoiceNo, string stockCode, string description, int quantity, DateTime invoiceDate, float unitPrice, 
-        int customerID, string country)
+        public Sales(string invoiceNo, string stockCode, string description, int quantity, DateTime invoiceDate, float unitPrice, 
+        string customerID, string country)
         {
             InvoiceNo = invoiceNo;
             StockCode = stockCode;
