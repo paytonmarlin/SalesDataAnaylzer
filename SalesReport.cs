@@ -19,7 +19,6 @@ namespace SalesDataAnalyzer
                 return report;
             }
 
-
         //List all the items sold to customers in Austrailia (stockCode and Description).
         report += "Items sold to customers in Austrailia:";
         var ausItems = from sales in salesList where sales.Country == "Austrailia" select sales;
@@ -91,10 +90,10 @@ namespace SalesDataAnalyzer
                 report += salesGroup.Key;   //This is the part for the specific country 
                 foreach (var sale in salesGroup)
                 {
-                    amtSales ++;
-                    report = $"Sales for {sale.Country}: {amtSales}"; //foreach country, we want the amount of sales
+                    amtSales ++;  //foreach country, we want the amount of sales
                 }
             }
+            report += $"Sales for {"Test"}: {amtSales}";
             report.TrimEnd(',');
             report += "\n";
         }
@@ -117,7 +116,7 @@ namespace SalesDataAnalyzer
             {
                totalSales ++;
             }
-            report +="\n Sales Total for customer 15311: " + totalSales;
+            report +="\n Total sales for customer 15311: " + totalSales;
             report.TrimEnd(',');
             report += "\n";
         }
@@ -137,7 +136,7 @@ namespace SalesDataAnalyzer
             {
                handUnits ++;
             }
-            report +="\n Sales Total for 'HAND WARMER UNION JACK' : " + handUnits;
+            report +="\n Unit total for 'HAND WARMER UNION JACK' : " + handUnits;
             report.TrimEnd(',');
             report += "\n";
         }
@@ -181,7 +180,7 @@ namespace SalesDataAnalyzer
             {
                 highUnit += 1;
                 if (highUnit == 1){
-                    report = $"\n Product with the highest unit price \n\t Stock Code:{sales.StockCode} \n\t {sales.Description}";
+                    report += $"\n Product with the highest unit price \n\t Stock Code:{sales.StockCode} \n\t {sales.Description}";
                 }
                 else{
                     break;
@@ -220,7 +219,7 @@ namespace SalesDataAnalyzer
                         orderby highGroup.Count() descending
                         select highGroup.Key).First();
         
-        report += "Inovice number with the highest sales: " + highSales;
+        report += "Invoice number with the highest sales: " + highSales;
 
 
               
