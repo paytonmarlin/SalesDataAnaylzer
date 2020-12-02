@@ -47,7 +47,7 @@ namespace SalesDataAnalyzer
             {
                 countDistinct++;
             }
-            report +="\n Number of individual sales: " + countDistinct;
+            report +="\n 2: Number of individual sales: " + countDistinct;
             report.TrimEnd(',');
             report += "\n";
         }
@@ -71,7 +71,7 @@ namespace SalesDataAnalyzer
                 overallTotal += singleTotal; //add the price total of each sale to the overall total
             }
             //display the decimal total to the report, can use the format method to do so
-            report +="\n Sales Total for invoice number 536365: " + "$" + string.Format("{0:0.00}\n", overallTotal);
+            report +="\n 3: Sales Total for invoice number 536365: " + "$" + string.Format("{0:0.00}\n", overallTotal);
             report.TrimEnd(',');
             report += "\n";
         }
@@ -88,6 +88,7 @@ namespace SalesDataAnalyzer
         var amtSales = 0;
         if(groupingCountry.Count() > 0)
         {
+
             foreach (var salesGroup in groupingCountry)
             {
                 report += salesGroup.Key;   //This is the part for the specific country 
@@ -106,6 +107,27 @@ namespace SalesDataAnalyzer
             }
 
         //Which customer has spent the most money during the period?
+        var customerMoney = salesList.GroupBy( s => s.CustomerID) //get a group of each customer and get their money spent on the unit price and quantity
+                            .Select( x => new {Customer = x.Key, Summation = x.Sum(c => (c.UnitPrice * c.Quantity))});
+
+        if(customerMoney.Count() > 0)
+        {
+           Dictionary<string, double> customerCost = new Dictionary<string, double>();
+        
+            foreach(var x in customerMoney)
+            {
+                customerCost.Add(x.Customer, x.Summation);
+            }
+            var maxValue = customerCost.Values.Max();
+            var keyMatch = customerCost.Keys.FirstOrDefault(s => customerCost[s] == maxValue);
+            report += $" 5: Customer {keyMatch} has spent the most money with ${maxValue}\n"; 
+        }
+        else{
+            report += "not available";
+        }
+
+        
+        
 
 
 
@@ -120,7 +142,7 @@ namespace SalesDataAnalyzer
             {
                totalSales ++;
             }
-            report +="\n Total sales for customer 15311: " + totalSales;
+            report +="\n 6: Total sales for customer 15311: " + totalSales;
             report.TrimEnd(',');
             report += "\n";
         }
@@ -140,7 +162,7 @@ namespace SalesDataAnalyzer
             {
                handUnits ++;
             }
-            report +="\n Unit total for 'HAND WARMER UNION JACK' : " + handUnits;
+            report +="\n 7: Unit total for 'HAND WARMER UNION JACK' : " + handUnits;
             report.TrimEnd(',');
             report += "\n";
         }
@@ -164,7 +186,7 @@ namespace SalesDataAnalyzer
                 var singleTotal = quan2*unit2;
                 totalHandSales += singleTotal; //add the price total of each sale to the overall total
             }
-            report +="\n Sales Total for 'HAND WARMER UNION JACK': " + "$" + string.Format("{0:0.00}", totalHandSales);
+            report +="\n 8: Sales Total for 'HAND WARMER UNION JACK': " + "$" + string.Format("{0:0.00}", totalHandSales);
             report.TrimEnd(',');
             report += "\n";
         }
@@ -184,7 +206,7 @@ namespace SalesDataAnalyzer
             {
                 highUnit += 1;
                 if (highUnit == 1){
-                    report += $"\n Product with the highest unit price \n\t Stock Code:{sales.StockCode} \n\t Description: {sales.Description}";
+                    report += $"\n 9: Product with the highest unit price \n\t Stock Code:{sales.StockCode} \n\t Description: {sales.Description}";
                 }
                 else{
                     break;
@@ -208,7 +230,7 @@ namespace SalesDataAnalyzer
             {
                totalEntire ++;
             }
-            report +="\n Sales Total for entire datasheet : " + totalEntire;
+            report +="\n 10: Sales Total for entire datasheet : " + totalEntire;
             report.TrimEnd(',');
             report += "\n";
         }
@@ -222,15 +244,41 @@ namespace SalesDataAnalyzer
                         group sales by sales.InvoiceNo into highGroup
                         orderby highGroup.Count() descending
                         select highGroup.Key).First();
+        if(highSales.Count() > 0)
+        {
+            report += "\n11: Invoice number with the highest sales: " + highSales;
+        }
         
-        report += "\nInvoice number with the highest sales: " + highSales;
+        else{
+            report += "not available\n";
+        }
+        
 
 
               
        //Which product sold the most units?
+        var productMax = salesList.GroupBy( s => s.Description)
+                            .Select( x => new {Product = x.Key, Sold = x.Sum(c => c.Quantity)});
 
+        if(productMax.Count() > 0)
+        {
+           Dictionary<string, int> products = new Dictionary<string, int>();
 
+        foreach (var x in productMax)
+        {
+            products.Add(x.Product, x.Sold);
+        }
 
+        var maxQuantity = products.Values.Max();
+        var maxProduct = products.Keys.FirstOrDefault(s => products[s] == maxQuantity);
+        report += $"\n\n12: Product {maxProduct} has sold the most units with {maxQuantity} units";
+ 
+        }
+        else{
+            report += "not available";
+        }
+        
+        
 
         return report;
         }

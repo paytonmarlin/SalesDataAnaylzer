@@ -283,9 +283,9 @@ Stock Code: 48138Description: DOORMAT UNION FLAG
 Stock Code: 48138Description: DOORMAT UNION FLAG
 
 
- Number of individual sales: 2025
+ 2: Number of individual sales: 2025
 
- Sales Total for invoice number 536365: $1112.96
+ 3: Sales Total for invoice number 536365: $1112.96
 
 Australia: 280
 Austria: 352
@@ -312,17 +312,20 @@ Sweden: 18456
 Switzerland: 18848
 United Kingdom: 339848
 
+ 5: Customer  has spent the most money with $1554824
 
- Total sales for customer 15311: 1552
+ 6: Total sales for customer 15311: 1552
 
- Unit total for 'HAND WARMER UNION JACK' : 800
+ 7: Unit total for 'HAND WARMER UNION JACK' : 800
 
- Sales Total for 'HAND WARMER UNION JACK': $15572.48
+ 8: Sales Total for 'HAND WARMER UNION JACK': $15572.48
 
- Product with the highest unit price 
+ 9: Product with the highest unit price 
 	 Stock Code:AMAZONFEE 
 	 Description: AMAZON FEE
 
- Sales Total for entire datasheet : 339848
+ 10: Sales Total for entire datasheet : 339848
 
-Invoice number with the highest sales: 537434
+11: Invoice number with the highest sales: 537434
+
+12: Product WORLD WAR 2 GLIDERS ASSTD DESIGNS has sold the most units with 41560 units
