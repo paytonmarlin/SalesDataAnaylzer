@@ -20,8 +20,11 @@ namespace SalesDataAnalyzer
             }
 
         //List all the items sold to customers in Austrailia (stockCode and Description).
-        report += "Items sold to customers in Austrailia:";
-        var ausItems = from sales in salesList where sales.Country == "Austrailia" select sales;
+        report += "Items sold to customers in Australia:";
+        var ausItems = from sales in salesList 
+                       where sales.Country == "Australia" 
+                       select sales;
+
         if(ausItems.Count() > 0)
         {
             foreach (var sales in ausItems)
@@ -36,8 +39,7 @@ namespace SalesDataAnalyzer
         }
 
         //How many individual sales were there? To determine this you have to cout the unique invoice numbers. You should group by invoice number?
-        var distinctSales = (from sales in salesList  
-                             select sales).Distinct(); //gets unique numbers
+        var distinctSales = salesList.Where(s => s.CustomerID != null).GroupBy(s => s.InvoiceNo).Select(grp => grp.FirstOrDefault());; //gets unique numbers by selecting the first value of each group
         var countDistinct = 0;
         if(distinctSales.Count() > 0)
         {
@@ -68,7 +70,8 @@ namespace SalesDataAnalyzer
                 var singleTotal = quan*unit;
                 overallTotal += singleTotal; //add the price total of each sale to the overall total
             }
-            report +="\n Sales Total for invoice number 536365: " + overallTotal;
+            //display the decimal total to the report, can use the format method to do so
+            report +="\n Sales Total for invoice number 536365: " + "$" + string.Format("{0:0.00}\n", overallTotal);
             report.TrimEnd(',');
             report += "\n";
         }
@@ -92,8 +95,9 @@ namespace SalesDataAnalyzer
                 {
                     amtSales ++;  //foreach country, we want the amount of sales
                 }
+            report += $": {amtSales}"; 
+            report += "\n";
             }
-            report += $"Sales for {"Test"}: {amtSales}";
             report.TrimEnd(',');
             report += "\n";
         }
@@ -160,7 +164,7 @@ namespace SalesDataAnalyzer
                 var singleTotal = quan2*unit2;
                 totalHandSales += singleTotal; //add the price total of each sale to the overall total
             }
-            report +="\n Sales Total for 'HAND WARMER UNION JACK': " + totalHandSales;
+            report +="\n Sales Total for 'HAND WARMER UNION JACK': " + "$" + string.Format("{0:0.00}", totalHandSales);
             report.TrimEnd(',');
             report += "\n";
         }
@@ -180,7 +184,7 @@ namespace SalesDataAnalyzer
             {
                 highUnit += 1;
                 if (highUnit == 1){
-                    report += $"\n Product with the highest unit price \n\t Stock Code:{sales.StockCode} \n\t {sales.Description}";
+                    report += $"\n Product with the highest unit price \n\t Stock Code:{sales.StockCode} \n\t Description: {sales.Description}";
                 }
                 else{
                     break;
@@ -219,7 +223,7 @@ namespace SalesDataAnalyzer
                         orderby highGroup.Count() descending
                         select highGroup.Key).First();
         
-        report += "Invoice number with the highest sales: " + highSales;
+        report += "\nInvoice number with the highest sales: " + highSales;
 
 
               
