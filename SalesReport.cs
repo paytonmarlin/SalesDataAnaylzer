@@ -29,7 +29,7 @@ namespace SalesDataAnalyzer
         {
             foreach (var sales in ausItems)
             {
-                report += "\nStock Code: " + sales.StockCode + "Description: " + sales.Description;
+                report += "\nStock Code: " + sales.StockCode + "\t" + "Description: " + sales.Description;
             }
             report.TrimEnd(',');
             report += "\n\n";
@@ -86,6 +86,7 @@ namespace SalesDataAnalyzer
                               orderby newGroup.Key //groups them by country for organization
                               select newGroup;
         var amtSales = 0;
+        report += "4. Total sales organized by country: ";
         if(groupingCountry.Count() > 0)
         {
 
